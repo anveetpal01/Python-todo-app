@@ -1,0 +1,33 @@
+libraries 
+fastapi - framework {python -m pip install "fastapi[standard]"}
+uvicorn - Server run karne ke liye {pip install uvicorn}
+sqlalchemy - Database se baat karne ke liye ORM(object relational mapper) {pip install sqlalchemy}
+passlib[bcrypt] - passwords ko secret (hash) rakhne ke liye.
+python-jose[cryptography]: jwt tokens banane ke liye 
+combined command -
+pip install fastapi uvicorn sqlalchemy passlib[bcrypt] python-jose[cryptography]
+
+
+
+the backend is in fastapi and frontend is in react.js
+
+
+structure
+todo-app/
+│
+├── backend/                # (FastAPI - Logic & Data)
+│   ├── main.py             # Entry point (API Routes yahan hongi)
+│   ├── database.py         # Database connection settings
+│   ├── models.py           # Database Tables (Users & Tasks)
+│   ├── schemas.py          # Pydantic Models (Data Validation)
+│   └── auth.py             # Password hashing & Token generation
+│
+└── frontend/               # (React.js - UI)
+    ├── src/
+    │   ├── components/
+    │   │   ├── Login.jsx   # Login Form
+    │   │   ├── Signup.jsx  # Signup Form
+    │   │   └── TodoList.jsx# Main Dashboard
+    │   ├── App.jsx         # Routing (Kaunsa page dikhana hai)
+    │   └── api.js          # Backend se baat karne ke liye (Axios settings)
+    └── package.json
