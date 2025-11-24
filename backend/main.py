@@ -14,9 +14,9 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # Sirf in links ko allow karo
+    allow_origins=["*"],  
     allow_credentials=True,
-    allow_methods=["*"],     # Saare methods (GET, POST, DELETE) allow karo
+    allow_methods=["*"],     
     allow_headers=["*"],
 )
 # 2. Database Session Manager (Dependency)
