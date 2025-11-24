@@ -69,7 +69,7 @@ Here is the architecture of `backend/` directory and how the files interact:
 Run in command prompt  
 git clone https://github.com/anveetpal01/Python-todo-app  
 cd Python-todo-app  
-pip install -r requirement.txt  
+pip install -r requirements.txt  
 streamlit run streamlit-app.py  
 cd backend  
 uvicorn main:app --reload
