@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # 1. Backend Config
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://python-todo-app-3pii.onrender.com/"
 
 # 2. Session State Management (Yaad rakhna ki user login hai ya nahi)
 if 'token' not in st.session_state:
