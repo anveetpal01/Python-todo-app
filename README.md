@@ -66,8 +66,6 @@ Here is the architecture of `backend/` directory and how the files interact:
 ---
 
 ## 5. Install and Run
-run here online - https://python-todo-app.streamlit.app/ (user - tony@marvel.com | pass - 1234)  
-for offline - replace API_URL with localhost url in streamlit-app.py
 Run in command prompt  
 git clone https://github.com/anveetpal01/Python-todo-app  
 cd Python-todo-app  
