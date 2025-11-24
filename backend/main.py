@@ -12,15 +12,9 @@ models.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI()
 
-# Ye list allow karti hai ki kaun humare API se baat kar sakta hai
-origins = [
-    "http://localhost:5173", # React ka default port
-    "http://localhost:3000",
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,   # Sirf in links ko allow karo
+    allow_origins=["*"],   # Sirf in links ko allow karo
     allow_credentials=True,
     allow_methods=["*"],     # Saare methods (GET, POST, DELETE) allow karo
     allow_headers=["*"],
