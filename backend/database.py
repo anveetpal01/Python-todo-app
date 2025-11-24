@@ -1,8 +1,8 @@
 # this file connects with database by using sqlalchemy
 
 from sqlalchemy import create_engine # creates a connection engine that talks to your database.
-from sqlalchemy.ext.declarative import declarative_base #create a base class that your models inherit from.
-from sqlalchemy.orm import sessionmaker # creates a session class used to interact with the DB.
+# from sqlalchemy.ext.declarative import declarative_base #create a base class that your models inherit from.
+from sqlalchemy.orm import sessionmaker, declarative_base# creates a session class used to interact with the DB.
 
 #using sqlite
 '''

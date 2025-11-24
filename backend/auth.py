@@ -4,7 +4,6 @@
 2. Token(JWT): create token
 '''
 
-from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 from jose import JWTError, jwt
 from pwdlib import PasswordHash

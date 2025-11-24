@@ -4,7 +4,7 @@ API, Database mein data request tabhi lejayega agar wo schema mein hai
 Request Schema: when user sends the data
 Response Schema: when backend sends the data to user 
 '''
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
 
 # ---- Task Schemas ----
@@ -23,8 +23,7 @@ class Task(TaskBase):
     id: int
     owner_id: int
 
-    class Config:
-        from_attributes = True # This tells pydantic to read data from Database model
+    model_config = ConfigDict(from_attributes=True)
 
 # ---- User Schemas ----
 
@@ -40,5 +39,4 @@ class User(UserBase):
     is_active: bool = True
     tasks: List[Task] = [] # for showing users tasks
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

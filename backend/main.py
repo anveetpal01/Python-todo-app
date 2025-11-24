@@ -94,7 +94,7 @@ def create_task(
     current_user: models.User = Depends(get_current_user) # Ye line user verify karegi
 ):
     # Magic: Hum task ke 'owner_id' mein current user ki ID daal rahe hain
-    new_task = models.Task(**task.dict(), owner_id=current_user.id)
+    new_task = models.Task(**task.model_dump(), owner_id=current_user.id)
     db.add(new_task)
     db.commit()
     db.refresh(new_task)
@@ -106,3 +106,22 @@ def read_tasks(db: Session = Depends(get_db), current_user: models.User = Depend
     # Sirf WAHI tasks lao jiska owner current user hai
     tasks = db.query(models.Task).filter(models.Task.owner_id == current_user.id).all()
     return tasks
+
+# backend/main.py mein niche add karein
+
+@app.put("/tasks/{task_id}")
+def update_task(task_id: int, task_update: schemas.TaskCreate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
+    
+    # 1. Database mein task dhundo (User ID filter ke saath)
+    task = db.query(models.Task).filter(models.Task.id == task_id, models.Task.owner_id == current_user.id).first()
+    
+    # 2. Agar task nahi mila (ya kisi aur ka hai)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    
+    # 3. Status update karo
+    task.is_completed = task_update.is_completed
+    db.commit()
+    db.refresh(task)
+    
+    return task
